@@ -259,7 +259,6 @@ export async function ip_to_city(ip: string) {
     const maxmind = new Maxmind(new Uint8Array(data_file));
     return maxmind.lookup_city(ip)
   } catch(error) {
-    console.warn(error)
     return undefined
   }
 }

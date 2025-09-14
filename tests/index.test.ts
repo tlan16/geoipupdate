@@ -1,5 +1,5 @@
-import { expect, test } from "bun:test";
-import { ip_to_city } from '../index.ts'
+import {expect, test} from "bun:test";
+import {ip_to_city} from '../index.ts'
 
 test("ip_to_city", async () => {
   const response = await fetch('https://checkip.amazonaws.com/')
@@ -11,4 +11,4 @@ test("ip_to_city", async () => {
   expect(city).toBeTruthy();
   expect(typeof city).toBe('object')
   console.log(city)
-});
+}, {timeout: 60_000});
