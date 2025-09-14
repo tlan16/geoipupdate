@@ -10,4 +10,5 @@ test("ip_to_city", async () => {
   const city = await ip_to_city(ip);
   expect(city).toBeTruthy();
   expect(typeof city).toBe('object')
+  console.log(city)
 });

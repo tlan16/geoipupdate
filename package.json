@@ -1,6 +1,6 @@
 {
   "name": "geoipupdate-ts",
-  "version": "0.2.1",
+  "version": "0.3.1",
   "module": "index.ts",
   "type": "module",
   "devDependencies": {
@@ -8,12 +8,12 @@
     "@types/tmp": "^0.2.6"
   },
   "peerDependencies": {
-    "typescript": "^5"
+    "typescript": "^5.9.2"
   },
   "dependencies": {
-    "@maxmind/geoip2-node": "^6.1.0",
     "@xhmikosr/decompress": "^10.2.0",
     "@xhmikosr/decompress-targz": "^8.1.0",
+    "maxminddb-wasm": "^2.1.1",
     "tmp": "^0.2.5",
     "zod": "^4.1.8"
   }

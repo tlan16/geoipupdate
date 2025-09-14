@@ -242,7 +242,7 @@ async function update_geo_database() {
 
 // await update_geo_database()
 
-import {Reader as MaxmindReader} from '@maxmind/geoip2-node'
+import { Maxmind } from 'maxminddb-wasm/node-module';
 
 export async function ip_to_city(ip: string) {
   if (!ip) {
@@ -255,8 +255,9 @@ export async function ip_to_city(ip: string) {
   }
 
   try {
-    const country_reader = await MaxmindReader.open(data_file_path)
-    return country_reader.city(ip)
+    const data_file = await Bun.file(data_file_path).arrayBuffer();
+    const maxmind = new Maxmind(new Uint8Array(data_file));
+    return maxmind.lookup_city(ip)
   } catch(error) {
     console.warn(error)
     return undefined
