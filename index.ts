@@ -240,4 +240,14 @@ async function update_geo_database() {
   console.log('GeoIP database update completed successfully.');
 }
 
-await update_geo_database()
+// await update_geo_database()
+
+import {Reader as MaxmindReader} from '@maxmind/geoip2-node'
+
+export async function ip_to_city(ip: string) {
+  if (!ip) {
+    return undefined
+  }
+  const country_reader = await MaxmindReader.open(join(await get_data_directory(), 'GeoLite2-City.mmdb'))
+  return country_reader.city(ip)
+}

@@ -10,6 +10,7 @@
     "typescript": "^5"
   },
   "dependencies": {
+    "@maxmind/geoip2-node": "^6.1.0",
     "@xhmikosr/decompress": "^10.2.0",
     "@xhmikosr/decompress-targz": "^8.1.0",
     "tmp": "^0.2.5",
