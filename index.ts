@@ -254,6 +254,11 @@ export async function ip_to_city(ip: string) {
     await update_geo_database()
   }
 
-  const country_reader = await MaxmindReader.open(data_file_path)
-  return country_reader.city(ip)
+  try {
+    const country_reader = await MaxmindReader.open(data_file_path)
+    return country_reader.city(ip)
+  } catch(error) {
+    console.warn(error)
+    return undefined
+  }
 }
