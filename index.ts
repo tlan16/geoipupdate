@@ -248,6 +248,12 @@ export async function ip_to_city(ip: string) {
   if (!ip) {
     return undefined
   }
-  const country_reader = await MaxmindReader.open(join(await get_data_directory(), 'GeoLite2-City.mmdb'))
+
+  const data_file_path = join(await get_data_directory(), 'GeoLite2-City.mmdb')
+  if (!(await exists(data_file_path))) {
+    await update_geo_database()
+  }
+
+  const country_reader = await MaxmindReader.open(data_file_path)
   return country_reader.city(ip)
 }
